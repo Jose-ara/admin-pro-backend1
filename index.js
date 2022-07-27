@@ -21,6 +21,9 @@ app.use( express.json());
 //configurar cors
 app.use( cors() );
 
+//Carpeta pública
+app.use( express.static( 'public' ));
+
 //ruta
 app.use( '/api/usuarios', require('./routes/usuarios') );
 app.use( '/api/login', require('./routes/auth') );
