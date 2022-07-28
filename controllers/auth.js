@@ -43,8 +43,21 @@ const login = async (req, res = response) => {
         res.status(500).json({
             ok: false,
             msg: "Explotó esta vaina"
-        })
+        }) 
     }
+}
+
+const renewToken = async (req, res = response) => {
+
+    const uid = req.uid;
+
+    //Generar el TOKEN
+    const token = await generarJWT(uid);
+
+    res.json({
+        ok: true,
+        token
+    })
 }
 
 const googleSingIn = async (req, res = response) => {
@@ -94,5 +107,6 @@ const googleSingIn = async (req, res = response) => {
 
 module.exports = {
     login,
-    googleSingIn
+    googleSingIn,
+    renewToken
 }
